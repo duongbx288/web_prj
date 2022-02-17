@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login_style.css' %}">
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <section>
+        <div class="box">
+    <h2>Đăng Nhập</h2><br>
+    <div class="login">
+        <form id="login" method="post">
+            {% csrf_token %}
+            <label><b>SỐ CMND/CCCD</b>  
+        <div class="message">
+            {% include 'messages.html' %}
+        </div> 
+        </label>
+            <input type="text" name="username" id="Uname" placeholder="SỐ CMND/CCCD">
+            <br><br>
+            <label><b>Mật Khẩu     
+        </b>    
+        </label>
+            <input type="Password" name="password" id="Pass" placeholder="Mật Khẩu">
+            <br><br>
+            <input id="submit" type="submit" name="log" id="log" value="Đăng Nhập">
+        </form>
+    </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'medical_declaration_style.css'%}">
+    <title>Khai báo y tế</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>Covid System</h4>
+          </div>
+          <div class="nav-links">
+            <button class="login-button" onclick="home()">Home</button>
+            <button class="login-button" onclick="">About</button>
+            <button class="login-button" onclick="signout()">Log out</button>
+          </div>
+    </nav>
+    <main>
+    {% if user.is_authenticated and user.is_normal_user is True %}
+    <div class="form-container">
+    <h2>Khai báo y tế</h2>
+
+    <form method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" data-wards-url="{% url 'ajax_load_wards' %}">
+        {% csrf_token %}
+        <div class="start">
+        <div class="group">
+            <label for="registerForOtherPeople" class="label">Khai hộ</label>
+            {{ form.registerForOtherPeople }}
+            
+        </div>
+        <div class="group">
+            <label for="full_name" class="label">Họ tên (ghi chữ IN HOA)</label>
+            {{ form.full_name }}
+        </div>
+        <div class="group">
+            <label for="id_card" class="label">Số CCCD</label>
+            {{ form.id_card }}
+        </div>
+        <div class="group">
+            <label for="year_of_birth" class="label">Năm sinh</label>
+            {{ form.year_of_birth }}
+        </div>
+        <div class="group">
+            <label for="gender" class="label">Giới tính</label>
+            {{ form.gender }}
+        </div>
+        <div class="group">
+            <label for="nationality" class="label">Quốc tịch</label>
+            {{ form.nationality }}
+        </div>
+        <br/>
+
+
+        <h4>Địa chỉ liên lạc tại Việt Nam</h4>
+        <div class="group">
+            <label for="province" class="label">Tỉnh thành </label>
+            {{ form.province }}
+        </div>
+        <br/>
+        <div class="group">
+            <label for="city" class="label">Quận / huyện </label>
+            {{ form.city }}
+        </div>
+        <br/>
+        <div class="group">
+            <label for="ward" class="label">Phường / xã</label>
+            {{ form.ward }}
+        </div>
+        <br/>
+        <div class="group">
+            <label for="detailed_address" class="label">Số nhà, phố, tổ dân phố/thôn/đội</label>
+            {{ form.detailed_address }}
+        </div>
+        <br/>
+        <div class="group">
+            <label for="phone_number" class="label">Điện thoại</label>
+            {{ form.phone_number }}
+        </div>
+        <div class="group">
+            <label for="email" class="label">Email</label>
+            {{ form.email }}
+        </div>
+        </div>
+        <div class="end">
+        <div class="group">
+            <label for="past_14d_travel" class="label">Trong vòng 14 ngày qua, Anh/Chị có đến tỉnh/thành phố, quốc gia/vùng lãnh thổ nào</label>
+            {{ form.past_14d_travel }}
+        </div>
+        <div class="arr_addr" hidden="true">
+            <h4>Nơi đến</h4>
+            <div class="group">
+                <label for="arrival_province" class="label">Tỉnh thành</label>
+                {{ form.arrival_province }}
+            </div>
+            <div class="group">
+                <label for="arrival_city" class="label">Quận / huyện</label>
+                {{ form.arrival_city }}
+            </div>
+            <div class="group">
+                <label for="arrival_ward" class="label">Phường / xã</label>
+                {{ form.arrival_ward }}
+            </div>
+            <div class="group">
+                <label for="arrival_detailed_place" class="label">Số nhà, phố, tổ dân phố/thôn/đội</label>
+                {{ form.arrival_detailed_place }}
+            </div>
+        </div>
+
+        <div class="group">
+            <label for="past_14d_symptoms" class="label">Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không?</label>
+            {{ form.past_14d_symptoms }}
+        </div>
+        <div class="group symptoms_deltail" hidden="true">
+            <label for="deltaild_description" class="label">Mô tả chi tiết</label>
+            {{ form.deltaild_description }}
+        </div>
+        <div>
+            <h4>Trong vòng 14 ngày qua, Anh/Chị có tiếp xúc với</h4>
+
+            <div class="group">
+                <label for="in_contact_confirmed_COVID19_case" class="label">Người bệnh hoặc nghi ngờ, mắc bệnh COVID-19 </label>
+                {{ form.in_contact_confirmed_COVID19_case }}
+            </div>
+            <div class="group">
+                <label for="in_contact_people_from_countries_with_COVID19" class="label">Người từ nước có bệnh COVID-19 </label>
+                {{ form.in_contact_people_from_countries_with_COVID19 }}
+            </div>
+            <div class="group">
+                <label for="in_contact_people_with_syptoms" class="label">Người có biểu hiện (Sốt, ho, khó thở , Viêm phổi) </label>
+                {{ form.in_contact_people_with_syptoms }}
+            </div>
+        </div>
+        <input class="submit" type="submit" value="Lưu thay đổi">
+        </div>
+    </form>
+    </div>
+    </main>
+
+    <div class="planet Earth">
+        <div class="container">
+          <div class="loader"><span></span></div>
+          <div class="earth"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#arr_addr_1').click(function() {
+                $('.arr_addr').attr('hidden',false);
+            });           
+            $('#arr_addr_0').click(function() {
+                $('.arr_addr').attr('hidden',true);
+                $('.arrival').val("");
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            $('#symptoms_deltail_1').click(function() {
+                $('.symptoms_deltail').attr('hidden',false);
+            });           
+            $('#symptoms_deltail_0').click(function() {
+                $('.symptoms_deltail').attr('hidden',true);
+                $('#id_deltaild_description').val("");
+            });
+        });
+    </script>
+    <script>
+        $("#id_province").change(function () {
+            const url = $("#personForm").attr("data-cities-url");  // get the url of the `load_cities` view
+            const provinceId = $(this).val();  // get the selected country ID from the HTML input
+    
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                data: {
+                    'province_id': provinceId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+    
+        });
+    </script>
+    <script>
+        $("#id_city").change(function () {
+            const url = $("#personForm").attr("data-wards-url");  // get the url of the `load_cities` view
+            const cityId = $(this).val();  // get the selected country ID from the HTML input
+    
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                data: {
+                    'city_id': cityId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_ward").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+    
+        });
+    </script>
+    <script>
+        $("#id_arrival_province").change(function () {
+            const url = $("#personForm").attr("data-cities-url");  // get the url of the `load_cities` view
+            const provinceId = $(this).val();  // get the selected country ID from the HTML input
+    
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                data: {
+                    'province_id': provinceId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_arrival_city").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+    
+        });
+    </script>
+    <script>
+        $("#id_arrival_city").change(function () {
+            const url = $("#personForm").attr("data-wards-url");  // get the url of the `load_cities` view
+            const cityId = $(this).val();  // get the selected country ID from the HTML input
+    
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                data: {
+                    'city_id': cityId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_arrival_ward").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+            });
+    
+        });
+    </script>
+{% elif user.is_authenticated and user.is_normal_user is False %}
+    <script>window.location.href = 'http://127.0.0.1:8000'</script>
+{% else %}
+    <script>window.location.href = 'http://127.0.0.1:8000/login'</script>
+{% endif %}
+</body>
+</html>

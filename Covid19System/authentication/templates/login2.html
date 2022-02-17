@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link rel="stylesheet" href="{% static 'login_style.css'%}">
+
+   </head>
+    <body>
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng Nhập</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="margin-left: 5px">Đăng Ký</label>
+                <div class="login-form">
+                    <form class="sign-in-htm" action="" method="post">
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="national_id" class="label">Số CMT/CCCD</label>
+                            <input id="national_id" name="national_id" type="text" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Mật Khẩu</label>
+                            <input id="pass" name="pass" type="password" class="input" data-type="password" Required>
+                        </div>
+                        <div class="group">
+                            <input id="check" name="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Duy trì đăng nhập</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" name="sign_in" value="Đăng Nhập">
+                        </div>
+                        <div class="message">
+                            {% include 'messages.html' %}
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="login/forgot">Quên mật khẩu?</a>
+                        </div>
+                    </form>
+                    <form class="sign-up-htm" action="" method="post">
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="national_id" class="label">Số CMT/CCCD</label>
+                            <input id="national_id" name="national_id" type="text" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="email" class="label">Email</label>
+                            <input id="email" name="email" type="text" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="pass1" class="label">Mật Khẩu</label>
+                            <input id="pass1" name="pass1"  type="password" class="input" data-type="password" Required>
+                        </div>
+                        <div class="group">
+                            <label for="pass2" class="label">Xác Nhận Mật Khẩu</label>
+                            <input id="pass2" name="pass2" type="password" class="input" data-type="password" Required>
+                        </div>
+                        <div class="group">
+                            <label for="lname" class="label">Họ</label>
+                            <input id="lname" name="lname" type="text" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="fname" class="label">Tên</label>
+                            <input id="fname" name="fname" type="text" class="input" Required>
+                        </div>
+                        <div class="group" style="margin-top: 30px">
+                            <input type="submit" class="button" name="sign_up" value="Đăng Ký">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

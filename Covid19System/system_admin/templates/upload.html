@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <title>Admin page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+
+  <body>
+    <!-- left-side bar -->
+    <div class="navigation">
+      <div class="wrapper">
+        <div class="decoration">
+          <p><i class="fas fa-home"></i>Admin Page</p>
+        </div>
+        <ul>
+          <ul>
+            <li class="list">
+              <a href="http://127.0.0.1:8000/sys_admin/list-moh/">
+                <span class="icon"></span>
+                <span class="title">Danh sách Tài Khoản Nhân Viên Y Tế</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="http://127.0.0.1:8000/sys_admin/list-normal/">
+                <span class="icon"></span>
+                <span class="title">Danh sách Tài Khoản Người Dùng Thường</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="http://127.0.0.1:8000/sys_admin/add/">
+                <span class="icon"></span>
+                <span class="title">Thêm Tài Khoản</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="http://127.0.0.1:8000/sys_admin/upload/">
+                <span class="icon"></span>
+                <span class="title">Thêm Nhiều Tài Khoản</span>
+              </a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/sys_admin/logout/">
+                <span class="icon"></span>
+                <span class="title">Đăng xuất</span>
+              </a>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="wrapper">
+        <div class="greeting">
+          Xin Chào {{request.user.first_name}} {{request.user.last_name}},
+        </div>
+        <div class="title" style="font-size: 35px">THÊM TÀI KHOẢN</div>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="message">{% include 'messages.html' %}</div>
+          <div class="inputfield">
+            <label>Tải lên file người dùng:</label>
+            <input type="file" name="file_user" />
+            <input
+              type="submit"
+              class="button"
+              name="file_user"
+              value="Upload"
+            />
+          </div>
+        </form>
+        <!-- ugly animation, just a filler-->
+        <div class="filler">
+          <div class="dot num1"></div>
+          <div class="dot num2"></div>
+          <div class="dot num3"></div>
+          <div class="dot num4"></div>
+          <div class="dot num5"></div>
+          <div class="dot num6"></div>
+          <div class="dot num1"></div>
+          <div class="dot num2"></div>
+          <div class="dot num3"></div>
+          <div class="dot num4"></div>
+          <div class="dot num5"></div>
+          <div class="dot num6"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

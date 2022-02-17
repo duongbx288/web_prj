@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* nav-bar*/
+nav{
+    position: fixed;
+    display: flex;
+    top: 0;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(129, 133, 201);
+    z-index: 100;
+}
+
+.logo{
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    height: 8vh;
+}
+
+.nav-links button{
+    list-style: none;
+}
+
+.nav-links button{
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    height: 100%;
+    background-color: rgb(129, 133, 201);
+    color:white;
+    width: 100px;
+    transition: 0.4s ease;
+}
+
+.nav-links button:hover{
+    background-color: white;
+    color: rgb(129, 133, 201);
+    cursor: pointer;
+}
+
+/*main content */
+main{
+    margin: 10vh auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-height: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(Background\ 00.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -100;
+}
+
+main .form-container{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0 , 0.3);
+    overflow: hidden;
+    color: #000;
+}
+
+main .form-container h3{
+    margin: 30px;
+    font-size: 45px;
+
+}
+
+main .form-container form,
+main .form-container p{
+    margin: 30px;
+    padding: 20px;
+    font-size: 25px;
+}
+
+main .form-container .input{
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+main .form-container a{
+    text-decoration: none;   
+}
+
+
+/* rotating-earth* (background)*/
+.planet{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.planet .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Earth{
+    position: relative;
+    min-width: 50%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    background: url(Background\ 00.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.Earth .loader span{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+}
+
+
+.earth {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: url(dot-earth.jpg);
+    border-radius: 50%;
+    background-size: cover;
+    box-shadow: inset 0 0 20px white,
+                 inset 0 0 120px #03a9f4;
+    animation: animateEarth 30s linear infinite;
+}
+
+@keyframes animateEarth{
+    0%{
+        background-position: 0;
+    }
+    100%{
+        background-position: 162.5%;
+    }   
+}

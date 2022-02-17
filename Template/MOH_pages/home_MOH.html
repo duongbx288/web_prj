@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link rel="stylesheet" href="upload_covid_cert_style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous"/>
+    <!-- Boxiocns CDN Link -->
+    <script src=""></script>
+  </head>
+  <body>
+
+    <nav>
+      <div class="logo">
+        <h4>Covid System</h4>
+      </div>
+      <div class="nav-links">
+        <button class="login-button" onclick="home()"><i class="fas fa-home" style="margin-right: 7px;"></i>Home</button>
+        <button class="login-button" onclick="">About</button>
+        <button class="login-button" onclick="signout()">Log out</button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="form-container">
+        <h3>Thông tin MOH</h3>
+        <div class="sections-container">
+          <div class="section_1">
+            <img src="user.jfif" alt="user image">
+            <p>Tên</p>
+          </div>
+          <div class="section_2">
+            <h4>Thông tin tài khoản</h4>
+            <p>Full name</p>
+            <p>Age</p>
+            <p>etc.</p>
+          </div>
+          <div class="section_3">
+             <button class="search" onclick="search()">Tìm kiếm <i class="fas fa-search" style="margin-left: 5px;"></i></button>
+             <button class="upload" onclick="uploadCert()">Cập nhập thông tin tiêm chủng</button>
+             <button class="profile-button" onclick="profile()"">Thông tin tài khoản<i class="far fa-user" style="margin-left: 5px;"></i></button>
+             <button>Hi</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <div class="planet Earth">
+      <div class="container">
+        <div class="loader"><span></span></div>
+        <div class="earth"></div>
+      </div>
+    </div>
+  </body>
+</html>

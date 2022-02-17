@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'medical_detail_style.css'%}">
+    <title>Thông tin khai báo</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>Covid System</h4>
+          </div>
+          <div class="nav-links">
+            <button class="login-button" onclick="">Home</button>
+            <button class="login-button" onclick="">About</button>
+            <button class="login-button" onclick="">Log out</button>
+          </div>
+    </nav>
+    <main>
+    <div class="form-container">
+        <h2>Thông tin khai báo y tế </h2>
+        <p>Thời điểm khai báo: {{ medicalDeclaration.declarationTime|date:"d-m-Y H:m:s" }}</p>
+        <p>Khai hộ: {{ medicalDeclaration.registerForOtherPeople }}</p>
+        <p>Họ tên: {{ medicalDeclaration.full_name }}</p>
+        <p>Số CCCD: {{ medicalDeclaration.id_card }}</p>
+        <p>Năm sinh: {{ medicalDeclaration.year_of_birth }}</p>
+        <p>Giới tính: {{ medicalDeclaration.gender }}</p>
+        <p>Quốc tịch: {{ medicalDeclaration.nationality }}</p>
+
+        <h3>Địa chỉ liên lạc tại Việt Nam</h3>
+        <p>Tỉnh thành: {{ medicalDeclaration.province }}</p>
+        <p>Quận / huyện: {{ medicalDeclaration.city }}</p>
+        <p>Phường / xã: {{ medicalDeclaration.ward }}</p>
+        <p>Số nhà, phố, tổ dân phố/thôn/đội: {{ medicalDeclaration.detailed_address }}</p>
+        <p>Điện thoại: {{ medicalDeclaration.phone_number }}</p>
+        <p>Email: {{ medicalDeclaration.email }}</p>
+        <h4>Trong vòng 14 ngày qua, Anh/Chị có đến tỉnh/thành phố, quốc gia/vùng lãnh thổ nào: {{ medicalDeclaration.past_14d_travel }}</h4>
+        {% if medicalDeclaration.past_14d_travel == "Có" %}
+            <p>Nơi đến</p>
+            <p>Tỉnh thành: {{ medicalDeclaration.arrival_province }}</p>
+            <p>Quận / huyện: {{ medicalDeclaration.arrival_city }}</p>
+            <p>Phường / xã: {{ medicalDeclaration.arrival_ward }}</p>
+            <p>Số nhà, phố, tổ dân phố/thôn/đội: {{ medicalDeclaration.arrival_detailed_address }}</p>
+        {% endif %}
+        <h4>Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không: {{ medicalDeclaration.past_14d_symptoms }}</h4>
+        {% if medicalDeclaration.past_14d_symptoms == "Có" %}
+            <p>Mô tả chi tiết: {{ medicalDeclaration.detailed_description }}</p>
+        {% endif %}
+        <h4>Trong vòng 14 ngày qua, Anh/Chị có tiếp xúc với</h4>
+        <p>Người bệnh hoặc nghi ngờ, mắc bệnh COVID-19: {{ medicalDeclaration.in_contact_confirmed_COVID19_case }}</p>
+        <p>Người từ nước có bệnh COVID-19: {{ medicalDeclaration.in_contact_people_from_countries_with_COVID19 }}</p>
+        <p>Người có biểu hiện (Sốt, ho, khó thở , Viêm phổi): {{ medicalDeclaration.in_contact_people_with_syptoms }}</p>
+        
+    </div>
+    </main>
+    <div class="planet Earth">
+        <div class="container">
+          <div class="loader"><span></span></div>
+          <div class="earth"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link rel="stylesheet" href="{% static 'login_style.css'%}">
+
+   </head>
+    <body>
+        <form class="sign-in-htm" action="" method="post">
+            {% csrf_token %}
+            <div class="group">
+                <label for="national_id" class="label">Số CMT/CCCD F0:</label>
+                <input id="national_id" name="national_id" type="text" class="input" Required>
+            </div>
+        </form>
+    
+    </body>
+</html>

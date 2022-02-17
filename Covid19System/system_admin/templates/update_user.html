@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta>
+    <title>Admin page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <!-- left-side bar -->
+    <div class="navigation">
+        <div class="wrapper">
+            <div class="decoration">
+                <p><i class="fas fa-home"></i>Admin Page</p> 
+             </div>
+            <ul>
+                <li class="list">
+                    <a href="http://127.0.0.1:8000/sys_admin/list-moh/">
+                        <span class="icon"></span>
+                        <span class="title">Danh sách Tài Khoản Nhân Viên Y Tế</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="http://127.0.0.1:8000/sys_admin/list-normal/">
+                        <span class="icon"></span>
+                        <span class="title">Danh sách Tài Khoản Người Dùng Thường</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="http://127.0.0.1:8000/sys_admin/add/">
+                        <span class="icon"></span>
+                        <span class="title">Thêm Tài Khoản</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="http://127.0.0.1:8000/sys_admin/upload/">
+                        <span class="icon"></span>
+                        <span class="title">Thêm Nhiều Tài Khoản</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000/sys_admin/logout/">
+                        <span class="icon"></span>
+                        <span class="title">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main">
+ 
+        <div class="wrapper">
+            <div class="greeting">
+                Xin Chào {{request.user.first_name}} {{request.user.last_name}},
+            </div>
+            <div class="title" style="font-size: 35px;">
+                THÊM TÀI KHOẢN
+            </div>
+            <form class="form" action="" method="post">
+                {% csrf_token %}
+                <div class="message">
+                    {% include 'messages.html' %}
+                </div>
+                <div class="inputfield">
+                    <label>Số CMND/CCCD</label>
+                    <input type="text" class="input" value="{{user.username}}" name="national_id">
+                </div>
+                <div class="inputfield">
+                    <label>email</label>
+                    <input type="text" class="input" value="{{user.email}}" name="email">
+                </div>
+                <div class="inputfield">
+                    <label>Họ</label>
+                    <input type="text" class="input" value="{{user.first_name}}" name="fname">
+                </div>
+                <div class="inputfield">
+                    <label>Tên</label>
+                    <input type="text" class="input" value="{{user.last_name}}" name="lname">
+                </div>
+                <div class="inputfield">
+                    <input type="submit" value="Cập Nhật" class="btn" name="submit">
+                </div>
+            </form>
+            <!-- ugly animation, just filler-->
+            <div class="filler">
+                <div class="dot num1"></div>
+                <div class="dot num2"></div>
+                <div class="dot num3"></div>
+                <div class="dot num4"></div>
+                <div class="dot num5"></div>
+                <div class="dot num6"></div>
+                <div class="dot num1"></div>
+                <div class="dot num2"></div>
+                <div class="dot num3"></div>
+                <div class="dot num4"></div>
+                <div class="dot num5"></div>
+                <div class="dot num6"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

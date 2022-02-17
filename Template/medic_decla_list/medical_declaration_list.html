@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="medical_list_style.css">
+    <title>Lịch sử khai báo</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>Covid System</h4>
+          </div>
+          <div class="nav-links">
+            <button class="login-button" onclick="">Home</button>
+            <button class="login-button" onclick="">About</button>
+            <button class="login-button" onclick="">Log out</button>
+          </div>
+    </nav>
+    
+    <main>
+    <div class="container">
+    <h2>Lịch sử khai báo </h2>
+    <hr>
+    <table>
+        <tr class="table-title">
+            <th>Người khai báo</th>
+            <th>Thời gian khai báo</th>
+            <th>Thông tin chi tiết</th>
+        </tr>
+        <tr class="table-content">
+            <th>Full name</th>
+            <th>Declared Time</th>
+            <th><a href="http://127.0.0.1:8000/showkbytdetail/{{ medicalDeclaration.id }}">More info</th>
+        </tr>
+        <tr class="table-content">
+            <th>Full name</th>
+            <th>Declared Time</th>
+            <th><a href="http://127.0.0.1:8000/showkbytdetail/{{ medicalDeclaration.id }}">More info</th>
+        </tr>
+
+    </table>
+    <!--
+    {% else %}
+    <p class="error">Không tồn tại khai báo y tế nào</p>
+    {% endif %} 
+    -->
+    </div>
+    </main>
+
+    <div class="planet Earth">
+        <div class="container">
+          <div class="loader"><span></span></div>
+          <div class="earth"></div>
+        </div>
+    </div>
+</body>
+</html>

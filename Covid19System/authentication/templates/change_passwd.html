@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'forget_passwd_style.css'%}">
+
+   </head>
+    <body>
+        <div class="login-wrap">
+            <div class="login-html">
+                <label for="login-form" class="tab1">Đổi Mật Khẩu</label>
+                <div class="login-form">
+                    <form class="sign-in-htm" action="" method="post">
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="old_pass" class="label">Mật Khẩu Hiện Tại</label>
+                            <input id="old_pass" name="old_pass" type="password" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="new_pass" class="label">Mật khẩu mới</label>
+                            <input id="new_pass" name="new_pass" type="password" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="new_pass2" class="label">Xác nhận mật khẩu</label>
+                            <input id="new_pass2" name="new_pass2" type="password" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" name="sign_in" value="Đổi mật khẩu">
+                        </div>
+                        <div class="message">
+                            {% include 'messages.html' %}
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="/">Quay lại trang chủ</a>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

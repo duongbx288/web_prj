@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    /*border: solid 1px;*/
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    border: 1px solid black;
+    background: url('/static/images/whitebg.jpg');
+    overflow: hidden;
+}
+
+
+/* Used for naavigation bar ( the left-side bar) */
+
+.navigation {
+    display: flex;
+    width: 20vw;
+    min-width: 300px;
+    height: 100%;
+    padding-right: 5px;
+}
+
+.navigation .wrapper {
+    padding: 40px 0 10px 20px;
+    margin: 10px 10px;
+    width: 100%;
+    border-radius: 5px;
+    background: #4d59df;
+}
+
+.navigation .wrapper .decoration{
+    width: 100%;
+    height: 10vh;
+    background-color: wheat;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.navigation .wrapper .decoration p{
+    font-size: 27px;
+    margin: auto;
+    color: #000;
+}
+
+.navigation .wrapper .decoration i{
+    margin-right: 10px;
+}
+
+
+.navigation .wrapper ul {
+    list-style: none;
+}
+
+.navigation .wrapper ul li {
+    position: relative;
+    display: block;
+    width: auto;
+    margin: 10px 0 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #4d59df;
+    height: 80px;
+    border-bottom: 0.5px solid white;
+    cursor: pointer;
+    transition: 0.5s ease;
+    border-radius: 2px 0 0 2px;
+}
+
+.navigation .wrapper ul li:hover {
+    background: #fff;
+}
+
+.navigation .wrapper ul .active{
+    background: #fff;
+}
+
+.navigation .wrapper ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 50px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navigation .wrapper ul .active a{
+    color: #4d59df;
+}
+
+.navigation .wrapper ul li a:hover,
+.navigation .wrapper ul li:hover a{
+    color: #4d59df;
+}
+
+
+/*Used for Content*/
+
+.main {
+    display: flex;
+    width: 80%;
+    height: 100%;
+
+}
+
+.main .wrapper {
+    position: relative;
+    background-color: transparent;
+    padding: 15px 10px 10px 40px;
+    margin: 20px 30px;
+    width: 100%;
+    opacity: 1;
+    border-radius: 5px;
+    box-shadow: inset;
+    box-shadow: 0 5px 15px rgba(0,0,0 , 0.3);
+}
+
+.main .wrapper .greeting{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.main .wrapper .title{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 25px ;
+}
+
+
+/*For add - user*/
+
+.wrapper .form {
+    width: 100%;
+}
+
+.wrapper .form .inputfield {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .form .inputfield label {
+    width: 200px;
+    color: #757575;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea {
+    width: 75%;
+    border: 2px solid #d5dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+}
+
+.wrapper .form .inputfield .textarea {
+    width: 100%;
+    height: 125px;
+}
+
+
+
+.wrapper .form .inputfield p {
+    font-size: 14px;
+    color: #757575;
+}
+
+.wrapper .form .inputfield .btn {
+    width: 50%;
+    margin-top: 15px;
+    padding: 15px 15px;
+    font-size: 20px;
+    border: 0px;
+    background: #fec107;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+}
+
+.wrapper .form .inputfield .btn:hover {
+    background: #ffd658;
+}
+
+.wrapper .form .inputfield:last-child {
+    margin-bottom: 0;
+}
+
+.message {
+    color: red;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+/*for danh sach tai khoan */
+.wrapper .table-wrapper{
+    width: 95%;
+    overflow-y: auto;
+    height: 55vh;
+    border: 1px solid black;
+}
+
+.wrapper table{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.wrapper .table-wrapper table td{
+    max-height: 30px;
+}
+
+
+.wrapper .pagination{
+    margin-top: 30px;  
+}
+
+.wrapper .pagination a{
+    text-decoration: none;
+    background-color: #4d59df;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.wrapper .pagination a:hover{
+    background-color: #5f6aec;
+}
+
+.wrapper .inputfield label{
+    font-size: 25px;
+}
+
+.wrapper .inputfield input{
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+/* some sh*tty animation*/
+.wrapper .filler{
+    position: absolute;
+    transform: translateY(55px);
+    bottom: 0;
+    width: 70vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.wrapper .filler .dot{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0 , 0.3);
+}
+
+.wrapper .filler .num1{
+    animation: rainbow 3s infinite;
+}
+
+.wrapper .filler .num2{
+    animation: rainbow 4s infinite;
+}
+
+.wrapper .filler .num3{
+    animation: rainbow 5s infinite;
+}
+
+.wrapper .filler .num4{
+    animation: rainbow 6s infinite;
+}
+
+.wrapper .filler .num5{
+    animation: rainbow 5s infinite;
+}
+
+.wrapper .filler .num6{
+    animation: rainbow 4s infinite;
+}
+@keyframes rainbow {
+    0%{
+        background-color: white;
+    }
+
+    25%{
+        background-color: red;
+    }
+
+    37%{
+        background-color: orange;
+    }
+
+    50%{
+        background-color: yellow;
+    }
+
+    63%{
+        background-color: green;
+    }
+
+
+    75%{
+        background-color: cyan;
+    }
+
+    87%{
+        background-color: blue;
+    }
+
+    100%{
+        background-color: white;
+    }
+}

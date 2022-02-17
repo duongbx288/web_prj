@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+section{
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    background: url('/static/images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+section .box{
+    position: relative;
+    min-width: 500px;
+    width: 50vw;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    color: #000;
+}
+
+section .box:before{
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: url('/static/images/bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(3px);
+}
+
+section .box h2,
+section .box label{
+    position: relative;
+    margin: 0 0 20px;
+    padding: 0;
+    font-size: 45px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+section .box label{
+    font-size: 25px;
+}
+
+section .box label .message{
+    font-size: 15px;
+}
+
+section .box input{
+    position: relative;
+    margin: 0 0 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    z-index: 1;
+    width: 100%;
+    border: transparent;
+}
+
+section .box #submit{
+    width: 50%;
+    cursor: pointer;
+    border: transparent;
+    padding: 10px;
+    background-color: whitesmoke;
+    font-size: 25px;
+    position: relative;
+    transition: 0.5s;
+    height: 50px;
+}
+
+

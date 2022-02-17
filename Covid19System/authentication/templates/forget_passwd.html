@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'forget_passwd_style.css'%}">
+
+   </head>
+    <body>
+        <div class="login-wrap">
+            <div class="login-html">
+                <label for="login-form" class="tab1">Quên Mật Khẩu</label>
+                <label for="login-form" class="tab2">Nhập số CMT/CCCD và email của bạn để lấy lại mật khẩu</label>
+                <div class="login-form">
+                    <form class="sign-in-htm" action="" method="post">
+                    {% csrf_token %}
+                        <div class="group">
+                            <label for="national_id" class="label">Số CMT/CCCD</label>
+                            <input id="national_id" name="national_id" type="text" class="input" Required>
+                        </div>
+                        <div class="group">
+                            <label for="email" class="label">Email</label>
+                            <input id="email" name="email" type="text" class="input"  Required>
+                        </div>
+
+                        <div class="group">
+                            <input type="submit" class="button" name="sign_in" value="Lấy lại mật khẩu">
+                        </div>
+                        <div class="message">
+                            {% include 'messages.html' %}
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="/login">Quay lại đăng nhập?</a>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
